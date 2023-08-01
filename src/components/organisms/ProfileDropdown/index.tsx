@@ -1,22 +1,11 @@
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import {
-  Bars3Icon,
-  BellIcon,
-  CalendarIcon,
-  ChartPieIcon,
-  Cog6ToothIcon,
-  DocumentDuplicateIcon,
-  FolderIcon,
-  HomeIcon,
-  UsersIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { ChevronDownIcon,  } from '@heroicons/react/20/solid'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import clsx from 'clsx'
 
 const userNavigation = [
   { name: 'Your profile', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Sign out', href: '#' }
 ]
 
 export default function ProfileDropdown() {
@@ -51,7 +40,7 @@ export default function ProfileDropdown() {
               {({ active }) => (
                 <a
                   href={item.href}
-                  className={classNames(
+                  className={clsx(
                     active ? 'bg-gray-50' : '',
                     'block px-3 py-1 text-sm leading-6 text-gray-900'
                   )}

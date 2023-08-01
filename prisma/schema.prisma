@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Question {
+  id             String     @id @default(auto()) @map("_id") @db.ObjectId
+  address        String     @unique
+  title          String
+  content        String     
+  deadline       DateTime?  
+  reward         Float
+  answers        Answer[]
+  open           Boolean    @default(false)
+}
+
+model Answer {
+  id             String     @id @default(auto()) @map("_id") @db.ObjectId
+  address        String     @unique
+  content        String     
+  question       Question?  @relation(fields: [questionId], references: [id])
+  questionId     String     @db.ObjectId
+  helpful        Boolean?    
+}
